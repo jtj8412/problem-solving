@@ -1,6 +1,5 @@
 /* 두 개 뽑아서 더하기 */
 
-#include <string>
 #include <vector>
 
 using namespace std;
