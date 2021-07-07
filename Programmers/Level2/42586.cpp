@@ -1,6 +1,5 @@
 /* 기능개발 */
 
-#include <string>
 #include <vector>
 #include <math.h>
 
