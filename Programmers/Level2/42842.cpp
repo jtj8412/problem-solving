@@ -1,3 +1,5 @@
+/* 카펫 */
+
 #include <vector>
 #include <math.h>
 
