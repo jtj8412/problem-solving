@@ -1,7 +1,7 @@
-#include <iostream>
-#include <algorithm>
-#include <string>
+/* 예산 */
+
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
