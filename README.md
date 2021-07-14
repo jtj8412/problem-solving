@@ -14,6 +14,13 @@ int power_sum(int n) {
 }
 ```
 
+#### 거듭제곱(3) 수열의 합
+```cpp
+int power3_sum(int n) {
+    return (n * n) * (n + 1) * (n + 1) / 4;
+}
+```
+
 #### 최대공약수
 ```cpp
 int gcd(int a, int b) {
@@ -36,7 +43,7 @@ do {
 } while (next_permutation(begin, last))
 ```
 
-#### 컨테이너 초기화
+#### 컨테이너/배열 초기화
 ```cpp
 std::iota(begin, end, start_value);
 ```
