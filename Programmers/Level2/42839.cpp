@@ -64,13 +64,12 @@ int solution(string numbers) {
         for (int j = 0; j < comb_vec.size(); ++j) {
             vector<int> perm_vec =  permutation(comb_vec[j]);
             for (int k = 0; k < perm_vec.size(); ++k) {
-                if (prime[perm_vec[k]]) prime[perm_vec[k]] = 2;
+                if (prime[perm_vec[k]]) {
+                    prime[perm_vec[k]] = 0;
+                    ++answer;
+                }
             }
         }
-    }
-
-    for (int i = 0; i < max_num; ++i) {
-        if (prime[i] == 2) answer++;
     }
     
     return answer;
