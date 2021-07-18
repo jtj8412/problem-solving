@@ -1,3 +1,5 @@
+/* 다리를 지나는 트럭 */
+
 #include <string>
 #include <vector>
 #include <queue>
