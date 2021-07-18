@@ -1,10 +1,16 @@
 #include <string>
 #include <vector>
-#include <typeinfo>
 #include <iostream>
 #include <string.h>
+#include <algorithm>
 
 using namespace std;
+
+#define MAX_NUMBER 100000
+
+bool compare(const vector<int> &a, const vector<int> &b) {
+    return a.size() < b.size();
+}
 
 vector<string> split(string s, const char* delim) {
     int prev_idx = 0,
@@ -23,26 +29,42 @@ vector<string> split(string s, const char* delim) {
 
 vector<int> solution(string s) {
     vector<int> answer;
-    vector<string> s_tuple_vec = split(s, "},{");
+    vector<string> tuple_vec = split(s, "},{");
     vector<vector<int>> tuple_vvec;
+    int mem[MAX_NUMBER + 1] = {};
 
-    s_tuple_vec[0].erase(0, 2);
-    s_tuple_vec[s_tuple_vec.size() - 1].erase(s_tuple_vec.size() - 2, 2);
+    tuple_vec[0].erase(0, 2);
+    tuple_vec[tuple_vec.size() - 1].erase(tuple_vec[tuple_vec.size() - 1].size() - 2, 2);
 
-    for (int i = 0; i < s_tuple_vec.size(); ++i) {
-        vector<string> s_tuple_vvec = split(s_tuple_vec[i], ",");
+    for (int i = 0; i < tuple_vec.size(); ++i) {
+        vector<string> tmp_vvec = split(tuple_vec[i], ",");
+        vector<int> new_vec;
+        for (int j = 0; j < tmp_vvec.size(); ++j) {
+            new_vec.push_back(stoi(tmp_vvec[j]));
+        }
+        tuple_vvec.push_back(new_vec);
     }
 
+    sort(tuple_vvec.begin(), tuple_vvec.end(), compare);
 
-    
+    for (int i = 0; i < tuple_vvec.size(); ++i) {
+        for (int j = 0; j < tuple_vvec[i].size(); ++j) {
+            if (!mem[tuple_vvec[i][j]]) {
+                mem[tuple_vvec[i][j]] = 1;
+                answer.push_back(tuple_vvec[i][j]);
+                break;
+            }
+        }
+    }
 
     return answer;
 }
 
 int main() {
-    vector<int> ans = solution("{{2},{2,1},{2,1,3},{2,1,3,4}}");
+    vector<int> ans = solution("{{4,2,3},{3},{2,3,4,1},{2,3}}");
 
-    // for (int i = 0; i < ans.size(); ++i) {
-    //     cout << ans[i] << " ";
-    // }
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i] << " ";
+    }
+    return 0;
 }
