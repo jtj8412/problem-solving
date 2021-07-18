@@ -45,6 +45,8 @@ do {
 
 #### 컨테이너/배열 초기화
 ```cpp
+std:fill(addr, addr_end, value);
+std:fill_n(addr, size, value);
 std::iota(begin, end, start_value);
 ```
 
