@@ -7,7 +7,6 @@
 using namespace std;
 
 vector<int> solution(int n, vector<string> words) {
-
     vector<int> answer = {0, 0};
     unordered_set<string> um;
     int size = words.size(), i;
@@ -21,6 +20,6 @@ vector<int> solution(int n, vector<string> words) {
     }
 
     if (i != size) { answer[1] = (i / n) + 1; answer[0] = (i % n) + 1; }
-    
+
     return answer;
 }
