@@ -1,7 +1,6 @@
 /* 배달 */
 
 #include <vector>
-#include <iostream>
 using namespace std;
 
 int route[51][51] = {}, cache[51], N, K;
@@ -9,10 +8,8 @@ vector<int> route_vec[51];
 
 void logic(int idx = 1, int sum = 0, long long visited = 1 << 1) {
     for (auto i : route_vec[idx]) {
-        // if (visited & (1 << i) || sum + route[idx][i] > K || sum + route[idx][i] >= cache[i]) continue;
-        // cache[i] = sum + route[idx][i];
-        if (visited & ((long long)1 << i) || sum + route[idx][i] > K) continue;
-        cache[i] = min(cache[i], sum + route[idx][i]);
+        if (visited & ((long long)1 << i) || sum + route[idx][i] > K || sum + route[idx][i] >= cache[i]) continue;
+        cache[i] = sum + route[idx][i];
         logic(i, cache[i], visited | ((long long)1 << i));
     }
 }
