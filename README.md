@@ -52,6 +52,7 @@ std::iota(begin, end, start_value);
 
 #### 컨테이너/배열 정렬
 ```cpp
-std::sort(begin, end, comp);
+std::sort(begin, end, comp);        // Quick
+std::stable_sort(begin, end, comp); // Merge
 ```
 
