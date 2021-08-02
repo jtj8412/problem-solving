@@ -56,3 +56,12 @@ std::sort(begin, end, comp);        // Quick
 std::stable_sort(begin, end, comp); // Merge
 ```
 
+#### 우선순위 큐
+```cpp
+template <typename T>
+struct COMPARE {
+    bool operator()(const T& a, const T& b) { return a > b; }
+};
+priority_queue<int, vector<int>, COMPARE<int>> pq;
+```
+
