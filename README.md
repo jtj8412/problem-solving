@@ -62,6 +62,12 @@ std::sort(begin, end, comp);        // quick
 std::stable_sort(begin, end, comp); // merge
 ```
 
+#### 컨테이너/배열
+```cpp
+std::accumulate(addr, addr_end, init);
+std::accumulate(begin, end, init);
+```
+
 #### 우선순위 큐
 ```cpp
 template <typename T>
