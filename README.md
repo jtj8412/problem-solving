@@ -50,10 +50,16 @@ std::fill_n(addr, size, value);
 std::iota(begin, end, start_value);
 ```
 
+#### 컨테이너/배열 최댓값(최솟값)
+```cpp
+std::max_element(addr, addr_end);  // pointer
+std::max_element(begin, end);           // iterator
+```
+
 #### 컨테이너/배열 정렬
 ```cpp
-std::sort(begin, end, comp);        // Quick
-std::stable_sort(begin, end, comp); // Merge
+std::sort(begin, end, comp);        // quick
+std::stable_sort(begin, end, comp); // merge
 ```
 
 #### 우선순위 큐
@@ -62,6 +68,6 @@ template <typename T>
 struct COMPARE {
     bool operator()(const T& a, const T& b) { return a > b; }
 };
-priority_queue<int, vector<int>, COMPARE<int>> pq;
+std::priority_queue<int, vector<int>, COMPARE<int>> pq;
 ```
 
