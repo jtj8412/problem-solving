@@ -53,7 +53,7 @@ std::iota(begin, end, start_value);
 #### 컨테이너/배열 최댓값(최솟값)
 ```cpp
 std::max_element(addr, addr_end);  // pointer
-std::max_element(begin, end);           // iterator
+std::max_element(begin, end);      // iterator
 ```
 
 #### 컨테이너/배열 정렬
