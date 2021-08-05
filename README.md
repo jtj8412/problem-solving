@@ -8,6 +8,15 @@
 42861(섬 연결하기)
 ```
 
+#### 크러스컬 알고리즘 (Kruskal's Algorithm)
+```
+최소비용신장트리 알고리즘
+1. 가중치(거리) 낮은 순으로 간선 추가
+2. 사이클이 발생할 경우 스킵
+시간복잡도: O(ElogV)
+문제: 42861
+```
+
 #### 근의 공식
 ```cpp
 float quadratic_formula(float a, float b, float c, bool plus=true) {
