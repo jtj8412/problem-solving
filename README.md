@@ -1,5 +1,13 @@
 # Algorithm
 
+#### 실패
+
+```
+[Level3]
+
+42861(섬 연결하기)
+```
+
 #### 근의 공식
 ```cpp
 float quadratic_formula(float a, float b, float c, bool plus=true) {
