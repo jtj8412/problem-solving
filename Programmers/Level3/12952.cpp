@@ -8,9 +8,6 @@ dfs 로직
 아래로 칸을 거듭할수록, left와 right는 비트시프트를 이용해 배치 불가능 영역을 한칸씩 이동
 */
 
-#include <vector>
-using namespace std;
-
 int logic(int n, int cnt = 0, int left = 0, int mid = 0, int right = 0) {
     int disable = left | mid | right, sum = 0, bit;
     if (cnt == n) return 1;
