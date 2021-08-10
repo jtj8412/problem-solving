@@ -1,35 +1,20 @@
-/* 나누어 떨어지는 숫자 배열 */
+//----------------------------------------------------------------------------------
+// [ 나누어 떨어지는 숫자 배열 ] https://programmers.co.kr/learn/courses/30/lessons/12910
+//----------------------------------------------------------------------------------
 
-#include <string>
 #include <vector>
-#include <list>
-
+#include <algorithm>
 using namespace std;
 
 vector<int> solution(vector<int> arr, int divisor) {
 	vector<int> answer;
-	list<int> answerList;
-	list<int>::iterator iter, iterEnd = answerList.end();
-	int size = arr.size();
+	int size = arr.size(), i;
 
-	if (arr[0] % divisor == 0) answerList.push_back(arr[0]);
-
-	for (int i = 1; i < size; ++i) {
-		if (arr[i] % divisor != 0) continue;
-
-		for (iter = answerList.begin(); iter != iterEnd; ++iter) {
-			if (*iter > arr[i]) {
-				answerList.insert(iter, arr[i]);
-				break;
-			}
-		}
-		if (iter == iterEnd) answerList.push_back(arr[i]);
+	for (i = 0; i < size; ++i) {
+		if (arr[i] % divisor == 0) answer.push_back(arr[i]);
 	}
+	sort(answer.begin(), answer.end());
 
-	for (iter = answerList.begin(); iter != iterEnd; ++iter)
-		answer.push_back(*iter);
-
-	if (answer.empty()) answer.push_back(-1);
-
+	if (answer.size() == 0) answer.push_back(-1);
 	return answer;
 }
