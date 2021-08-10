@@ -1,12 +1,14 @@
-/* 콜라츠 추측 */
+//----------------------------------------------------------------------------------
+// [ 콜라츠 추측 ] https://programmers.co.kr/learn/courses/30/lessons/12943
+//----------------------------------------------------------------------------------
 
 #include <vector>
-
 using namespace std;
 
 int solution(int num) {
 	long answer = 0;
 	long long n = num;
+	
 	while (n != 1 && answer != 500)
 	{
 		if (n % 2 == 0) n /= 2;

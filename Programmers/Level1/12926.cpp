@@ -1,26 +1,20 @@
-/* 시저 암호 */
+//----------------------------------------------------------------------------------
+// [ 시저 암호 ] https://programmers.co.kr/learn/courses/30/lessons/12926
+//----------------------------------------------------------------------------------
 
 #include <string>
 #include <vector>
-
 using namespace std;
 
 string solution(string s, int n) {
-	string answer = "";
-
-	for (int i = 0; i < s.size(); ++i) {
-		if (s[i] == ' ') {
-			answer.push_back(' ');
+	for (int i = 0, size = s.size(), sum; i < size; ++i) {
+		if (s[i] == ' ') continue;
+		if (s[i] >= 'a') { 
+			if (s[i] + n > 'z') s[i] -= 26; 
 		}
-		else
-		{
-			int num = s[i] - ((s[i] >= 'a') ? 'a' : 'A');
-			num = (num + n) % 26;
-			num += (s[i] >= 'a') ? 'a' : 'A';
-			answer.push_back((char)num);
-		}
+		else if (s[i] + n > 'Z') 
+			s[i] -= 26;
+		s[i] += n;
 	}
-
-
-	return answer;
+	return s;
 }

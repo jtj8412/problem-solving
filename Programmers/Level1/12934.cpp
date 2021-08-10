@@ -1,8 +1,8 @@
-/* 정수 제곱근 판별 */
+//----------------------------------------------------------------------------------
+// [ 정수 제곱근 판별 ] https://programmers.co.kr/learn/courses/30/lessons/12934
+//----------------------------------------------------------------------------------
 
-#include <vector>
 #include <cmath>
-
 using namespace std;
 
 long long solution(long long n) {
