@@ -1,31 +1,26 @@
-/* 3천번 뒤집기 */
+//----------------------------------------------------------------------------------
+// [ 3진법 뒤집기 ] https://programmers.co.kr/learn/courses/30/lessons/68935
+//----------------------------------------------------------------------------------
 
 #include <string>
-#include <vector>
-
 using namespace std;
 
 int solution(int n) {
-	int answer = 0;
-	int mod_val = 43046721;
-	int mul_val = 1;
-	int idx = 0;
-	string base3 = "";
+	int answer = 0, mod = 43046721, mul = 1, idx = 0, div, i;
+	string s_three = "";
 
-	for (int i = 16; i >= 0; i--) {
-		int div = n / mod_val;
-
-		string tmp = { (char)(div + '0') };
-		base3.append(tmp);
-		n -= mod_val * div;
-		mod_val /= 3;
+	for (i = 16; i >= 0; i--) {
+		div = n / mod;
+		s_three += (div + '0');
+		n -= mod * div;
+		mod /= 3;
 	}
 
-	while (base3[idx++] == '0');
+	while (s_three[idx++] == '0');
 
-	for (int i = idx - 1; i < (int)base3.length(); ++i) {
-		answer += mul_val * (base3[i] - '0');
-		mul_val *= 3;
+	for (i = idx - 1; i < (int)s_three.length(); ++i) {
+		answer += mul * (s_three[i] - '0');
+		mul *= 3;
 	}
 
 	return answer;

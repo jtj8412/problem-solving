@@ -1,8 +1,8 @@
-/* 음양 더하기 */
+//----------------------------------------------------------------------------------
+// [ 음양 더하기 ] https://programmers.co.kr/learn/courses/30/lessons/76501
+//----------------------------------------------------------------------------------
 
 #include <vector>
-#include <string>
-
 using namespace std;
 
 int solution(vector<int> abs, vector<bool> signs) {

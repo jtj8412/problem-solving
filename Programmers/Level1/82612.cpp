@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------------
-// [ 위클리 챌린지 1주차 ]
+// [ 위클리 챌린지 1주차 ] https://programmers.co.kr/learn/courses/30/lessons/82612
 //
 // price + 2price + 3price ... count*price 
 //     = price(1 + 2 + 3 .. count) 
