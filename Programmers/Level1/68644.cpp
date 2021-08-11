@@ -1,11 +1,11 @@
-/* 두 개 뽑아서 더하기 */
+//----------------------------------------------------------------------------------
+// [ 두 개 뽑아서 더하기 ] https://programmers.co.kr/learn/courses/30/lessons/68644
+//----------------------------------------------------------------------------------
 
 #include <vector>
-
 using namespace std;
 
-vector<int> solution(vector<int> numbers)
-{
+vector<int> solution(vector<int> numbers) {
 	vector<int> ans;
 	int size = numbers.size(), arr[201] = {}, i, j;
 
@@ -16,8 +16,7 @@ vector<int> solution(vector<int> numbers)
 	}
 
 	for (int i = 0; i < 201; ++i) {
-		if (arr[i])
-			ans.push_back(i);
+		if (arr[i]) ans.push_back(i);
 	}
 
 	return ans;

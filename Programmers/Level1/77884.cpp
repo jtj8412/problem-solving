@@ -1,4 +1,4 @@
-/* ¾à¼öÀÇ °³¼ö¿Í µ¡¼À */
+/* ì•½ìˆ˜ì˜ ê°œìˆ˜ì™€ ë§ì…ˆ */
 
 #include <string>
 #include <vector>
