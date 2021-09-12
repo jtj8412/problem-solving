@@ -1,4 +1,4 @@
-# Algorithm
+# Problem Solving
 
 #### 프로그래머스 실패
 
