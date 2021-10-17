@@ -4,23 +4,14 @@
 
 #include "test.h"
 
-const string SERVER = "https://kox947ka1a.execute-api.ap-northeast-2.amazonaws.com/prod/users";
-const string TOKEN = "";
-string AUTH_KEY;
-
-Connection conn(SERVER);
-
-
+//////////////////// Custom Structure ////////////////////
 enum class COMMAND { NONE = 0, UP, RIGHT, DOWN, LEFT, PICK, DROP, END };
 struct Truck { int x = 0, y = 0, cnt = 0; };
 struct Area { int min_x = 0, min_y = 0, max_x = 0, max_y = 0; };
 struct Position { int x = -1, y = -1; Position() {} Position(int _x, int _y) : x(_x), y(_y) {} };
 struct Route { int score = -1; vector<int> cmds; void clear() { score = -1; cmds.clear(); } };
 
-const int DX[] = { 0, 0, 1, 0, -1 }, DY[] = { 0, 1, 0, -1, 0 };
-
-
-
+//////////////////// Test Case //////////////////////
 // [ PROBLEM 1-1 ] (score: 272)
 //const int PROBLEM = 1;
 //const int BOARD_SIZE = 5;
@@ -62,34 +53,41 @@ const int DX[] = { 0, 0, 1, 0, -1 }, DY[] = { 0, 1, 0, -1, 0 };
 //};
 
 // [ PROBLEM 2-2 ] (score: 678)
-const int PROBLEM = 2;
-const int BOARD_SIZE = 60;
-const int TRUCK_SIZE = 9;
-const int CASE[] = { 2, 3, 2, 3 };
-Truck extra_truck;
-const Area AREAS[TRUCK_SIZE] = {
-    {0, 0, 19, 19},
-    {0, 20, 19, 39},
-    {0, 40, 19, 59},
-    {20, 0, 39, 19},
-    {20, 20, 39, 39},
-    {20, 40, 39, 59},
-    {40, 0, 59, 19},
-    {40, 20, 59, 39},
-    {40, 40, 59, 59}
-};
-const int EXTRA_DESTS[3][2][2] = {
-    { {50, 37}, {59, 55} },
-    { {43, 55}, {12, 4} },
-    { {41, 5}, {16, 9} }
-};
-int extra_idx = 0;
+// const int PROBLEM = 2;
+// const int BOARD_SIZE = 60;
+// const int TRUCK_SIZE = 9;
+// const int CASE[] = { 2, 3, 2, 3 };
+// Truck extra_truck;
+// const Area AREAS[TRUCK_SIZE] = {
+//     {0, 0, 19, 19},
+//     {0, 20, 19, 39},
+//     {0, 40, 19, 59},
+//     {20, 0, 39, 19},
+//     {20, 20, 39, 39},
+//     {20, 40, 39, 59},
+//     {40, 0, 59, 19},
+//     {40, 20, 59, 39},
+//     {40, 40, 59, 59}
+// };
+// const int EXTRA_DESTS[3][2][2] = {
+//     { {50, 37}, {59, 55} },
+//     { {43, 55}, {12, 4} },
+//     { {41, 5}, {16, 9} }
+// };
+// int extra_idx = 0;
 
+//////////////////// Global Variable ////////////////////
+const string SERVER = "https://kox947ka1a.execute-api.ap-northeast-2.amazonaws.com/prod/users";
+const string TOKEN = "";
+string AUTH_KEY;
 
+Connection conn(SERVER);
+const int DX[] = { 0, 0, 1, 0, -1 }, DY[] = { 0, 1, 0, -1, 0 };
 int board[BOARD_SIZE][BOARD_SIZE];
 Truck trucks[TRUCK_SIZE];
 Route routes[BOARD_SIZE][BOARD_SIZE] = {};
 
+//////////////////// API ////////////////////
 Value start_api(int problem) {
     return post(conn, "/start", json_to_string(make_json("problem", problem)));
 }
@@ -114,6 +112,7 @@ Value past_api(int day) {
     return get2(string("https://grepp-cloudfront.s3.ap-northeast-2.amazonaws.com/programmers_imgs/competition-imgs/2021kakao/problem2_day-") + to_string(day) + string(".json"));
 }
 
+//////////////////// Logic Function ////////////////////
 void past_log() {
     vector<int> vec1(3600), vec2(3600);
     const int time[] = { 480, 720};
@@ -135,6 +134,7 @@ void past_log() {
     cout << (it1 - vec1.begin()) << " " << (it2 - vec2.begin()) << endl;
 }
 
+// simulate_api 제출을 위한 커맨드 작성
 Value make_command(int truck_id, const vector<int>& cmds) {
     Value json;
     json["truck_id"] = truck_id;
@@ -142,6 +142,7 @@ Value make_command(int truck_id, const vector<int>& cmds) {
     return json;
 }
 
+// 자전거의 수량이 0인 정류장 위치 탐색
 Position zero_position(const Truck& truck, const Area& area) {
     Position dest;
     int min_dist = INT_MAX, dist;
@@ -155,6 +156,7 @@ Position zero_position(const Truck& truck, const Area& area) {
     return dest;
 }
 
+// min_cnt 이상이며, 거리 대비 자전거가 많은 정류장의 위치 탐색
 Position pick_position(int min_cnt, const Truck& truck, const Area& area) {
     Position dest;
     int max_score = -0x7fffffff;
@@ -162,8 +164,8 @@ Position pick_position(int min_cnt, const Truck& truck, const Area& area) {
         for (int j = area.min_x; j <= area.max_x; ++j) {
             if (PROBLEM == 2) 
             if (board[i][j] < min_cnt) continue;
-            if (j == EXTRA_DESTS[extra_idx][0][0] && i == EXTRA_DESTS[extra_idx][0][1]) continue; // extra
-            if (j == EXTRA_DESTS[extra_idx][1][0] && i == EXTRA_DESTS[extra_idx][1][1]) continue; // extra
+            //if (j == EXTRA_DESTS[extra_idx][0][0] && i == EXTRA_DESTS[extra_idx][0][1]) continue; // for extra (problem 2)
+            //if (j == EXTRA_DESTS[extra_idx][1][0] && i == EXTRA_DESTS[extra_idx][1][1]) continue; // for extra (problem 2)
             int dist = abs(truck.x - j) + abs(truck.y - i), val = board[i][j] - min_cnt + 1;
             if (val - (dist >> 1) > max_score) {
                 max_score = val - (dist >> 1);
@@ -174,6 +176,7 @@ Position pick_position(int min_cnt, const Truck& truck, const Area& area) {
     return dest;
 }
 
+// 지정 위치(dest)로 가기 위한 최적 경로 탐색 (경로에 min_cnt 이상의 자전거를 가진 정류장이 많아야 최적의 경로)
 vector<int> best_route(int min_cnt, const Truck& truck, const Position& dest) {
     vector<int> cmds;
     const COMMAND cmd_x = (truck.x == dest.x) ? COMMAND::NONE : ((truck.x > dest.x) ? COMMAND::LEFT : COMMAND::RIGHT);
@@ -212,6 +215,7 @@ vector<int> best_route(int min_cnt, const Truck& truck, const Position& dest) {
     return cmds;
 }
 
+// 메인 로직
 vector<int> truck_logic(int id) {
     vector<int> commands;
     Truck& truck = trucks[id];
@@ -301,6 +305,7 @@ vector<int> truck_logic(int id) {
     return commands;
 }
 
+// for problem2
 vector<int> extra_logic(int time) {
     vector<int> commands;
     static bool extra_flags[3] = {};
@@ -385,6 +390,7 @@ int main() {
         // 실행
         Value result = simulate_api(commands);
 
+        // 실행 결과 출력
         cout << trucks_api()["trucks"][9]["location_id"] << " (" << extra_truck.cnt << ")" << "\n";
         cout << "distance: " << result["distance"] << "\n";
         cout << "fail: " << result["failed_requests_count"] << "\n";
