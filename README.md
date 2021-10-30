@@ -20,3 +20,5 @@ Platinum    1
 Easy        8
 Medium      1
 ```
+
+Total Update: 21.10.30
