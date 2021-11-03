@@ -11,7 +11,7 @@ Level3      51
 ```
 Bronze      7
 Silver      24
-Gold        15
+Gold        17
 Platinum    1
 ```
 
