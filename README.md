@@ -21,4 +21,4 @@ Easy        8
 Medium      1
 ```
 
-Total Update: 21.11.01
+Total Update: 21.11.03
