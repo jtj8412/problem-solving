@@ -16,5 +16,5 @@ int main() {
             if (dict[val] != dict[answer] || val < answer) answer = val;
         }
     }
-    printf("%d\n", answer);
+    printf("%lld\n", answer);
 }
