@@ -10,8 +10,8 @@ Level3      51
 ## Baekjoon
 ```
 Bronze      7
-Silver      27
-Gold        17
+Silver      32
+Gold        19
 Platinum    1
 ```
 
