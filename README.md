@@ -11,7 +11,7 @@ Level3      51
 ```
 Bronze      7
 Silver      35
-Gold        22
+Gold        23
 Platinum    1
 ```
 
@@ -21,4 +21,4 @@ Easy        8
 Medium      1
 ```
 
-Total Update: 21.11.22
+Total Update: 21.11.24
