@@ -1,4 +1,11 @@
 *.exe
 .vscode/
 Kakao/2022/
+.vs/
+x64/
+*.sln
+*.vcxproj*
+
+
 test.cpp
+main.cpp
