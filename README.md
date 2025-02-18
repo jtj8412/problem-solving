@@ -2,8 +2,8 @@
 
 ## Programmers
 ```
-Level1      56
-Level2      66
+Level1      57
+Level2      67
 Level3      51
 ```
 
