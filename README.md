@@ -3,7 +3,7 @@
 ## Programmers
 ```
 Level1      57
-Level2      69
+Level2      70
 Level3      51
 ```
 
