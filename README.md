@@ -4,7 +4,7 @@
 ```
 Level1      57
 Level2      70
-Level3      51
+Level3      52
 ```
 
 ## Baekjoon
@@ -20,5 +20,3 @@ Platinum    1
 Easy        8
 Medium      1
 ```
-
-Total Update: 21.11.30
